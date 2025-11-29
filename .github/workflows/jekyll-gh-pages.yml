@@ -1,13 +1,19 @@
 name: EMVQR Deployment
+
 on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 permissions:
-  contents: write
-  pages: write
-  id-token: write
+  contents: read      # read the repo
+  pages: write        # deploy to Pages
+  id-token: write     # needed by deploy-pages
+
+concurrency:
+  group: "github-pages"
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -19,30 +25,28 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
+          # use an LTS version your app supports; 22 is safe
           node-version: '24.9.0'
+          cache: 'npm'
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build
         run: npm run build
 
-      - name: Upload artifact
+      - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist
+          path: ./dist    # ← folder that `npm run build` outputs
 
   deploy:
-    needs: build
     runs-on: ubuntu-latest
+    needs: build
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: EMVQR Deployment
+      - name: Deploy to GitHub Pages
         id: deployment
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-          publish_branch: gh-pages
+        uses: actions/deploy-pages@v4
