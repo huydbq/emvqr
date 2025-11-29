@@ -27,7 +27,6 @@ jobs:
         with:
           # use an LTS version your app supports; 22 is safe
           node-version: '24.9.0'
-          cache: 'npm'
 
       - name: Install dependencies
         run: npm install
