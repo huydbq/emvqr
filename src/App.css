@@ -1,0 +1,126 @@
+.main-container {
+  /* widen container so form/card can be larger on desktop */
+  max-width: 1400px;
+  width: 100%;
+  margin: 1rem auto 2rem; /* pull content up a bit to reduce large empty area */
+  padding: 0 1rem;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 0.75rem;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.06);
+  margin-bottom: 1rem;
+}
+
+/* Make cards a consistent, responsive width so empty pages don't look sparse. */
+.card {
+  max-width: 1100px; /* wider default card on desktop */
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  min-height: 200px; /* gives cards more presence before results appear */
+}
+
+/* Make the input card visually larger by default so the page feels balanced */
+.input-card {
+  min-height: 360px; /* larger presence for the input area on load */
+  padding-bottom: 1.75rem;
+}
+
+.card h2 {
+  margin-top: 0;
+  font-size: 1.1rem;
+}
+
+/* Content grid wraps the two main cards and provides the "seam" improvement */
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* single-column layout: input on top, results below */
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.left-col,
+.right-col {
+  width: 100%;
+}
+
+/* On wide screens show side-by-side and make center column narrower for focus */
+/* Keep single-column layout on larger screens as requested (results below input). */
+@media (min-width: 980px) {
+  .content-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .main-container {
+    padding-top: 0.5rem; /* reduce gap under header */
+  }
+}
+
+@media (min-width: 1200px) {
+  .content-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+/* Ensure left column card doesn't appear too narrow on very wide viewports */
+.left-col .card {
+  min-height: 220px;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .main-container {
+    margin: 1rem auto 1.5rem;
+    padding: 0 0.75rem;
+  }
+
+  .card {
+    padding: 1rem 1.25rem;
+    border-radius: 0.5rem;
+    min-height: 160px;
+  }
+
+  .card h2 {
+    font-size: 1rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .main-container {
+    margin: 0.75rem auto 1rem;
+    padding: 0 0.5rem;
+  }
+
+  .card {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.75rem;
+    border-radius: 0.375rem;
+    min-height: unset; /* let cards size naturally on small screens */
+  }
+
+  .card h2 {
+    font-size: 0.9rem;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .main-container {
+    margin: 0.5rem auto 0.75rem;
+  }
+
+  .card {
+    padding: 0.5rem 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .card h2 {
+    font-size: 0.85rem;
+  }
+}

@@ -1,0 +1,209 @@
+.results-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  overflow-x: auto;
+  /* keep real table layout on desktop for compact rows */
+}
+
+/* Use standard table element display on desktop so rows remain compact. */
+
+.results-table th,
+.results-table td {
+  padding: 0.45rem 0.5rem;
+  border-bottom: 1px solid #e5e7eb;
+  text-align: left;
+  vertical-align: top;
+  word-break: break-word;
+}
+
+.results-table th {
+  background: #f3f4f6;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+/* Prefer sensible column widths on desktop for better balance */
+@media (min-width: 980px) {
+  .results-table th:nth-child(1),
+  .results-table td:nth-child(1) { width: 18%; }
+  .results-table th:nth-child(2),
+  .results-table td:nth-child(2) { width: 10%; }
+  .results-table th:nth-child(3),
+  .results-table td:nth-child(3) { width: 6%; }
+  .results-table th:nth-child(4),
+  .results-table td:nth-child(4) { width: 48%; }
+  .results-table th:nth-child(5),
+  .results-table td:nth-child(5) { width: 18%; }
+
+  .results-table td.code {
+    max-width: 520px;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+}
+
+.results-table tr:nth-child(even) td {
+  background: #fafafa;
+}
+
+.results-table tr:hover td {
+  background-color: #f0f0f5;
+}
+
+.path {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  font-size: 0.8rem;
+  color: #4b5563;
+  word-break: break-word;
+  max-width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  word-break: break-all;
+  max-width: 360px; /* allow reasonable width for values */
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.tag-badge {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  background: #eef2ff;
+  color: #4338ca;
+  font-size: 0.8rem;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.meaning-muted {
+  color: #9ca3af;
+  font-style: italic;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .results-table {
+    font-size: 0.8rem;
+  }
+
+  .results-table th,
+  .results-table td {
+    padding: 0.4rem 0.4rem;
+  }
+
+  .results-table th {
+    font-size: 0.75rem;
+  }
+
+  .code {
+    max-width: 120px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .results-table {
+    font-size: 0.75rem;
+    display: block;
+    overflow-x: auto;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.375rem;
+  }
+
+  /* Stacked, accessible rows: hide header and present each cell with its label */
+  .results-table thead {
+    display: none;
+  }
+
+  .results-table tbody {
+    display: block;
+  }
+
+  .results-table tr {
+    display: block;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 0.65rem 0.6rem;
+    background: #fff;
+    margin-bottom: 0.6rem;
+    border-radius: 0.35rem;
+  }
+
+  .results-table td {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.25rem 0;
+    align-items: flex-start;
+    border: none;
+  }
+
+  .results-table td[data-label]::before {
+    content: attr(data-label) ":";
+    flex: 0 0 110px;
+    color: #6b7280;
+    font-weight: 700;
+    font-size: 0.75rem;
+    min-width: 90px;
+  }
+
+  .results-table td .tag-badge {
+    margin-top: 2px;
+  }
+
+  .results-table td.code {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    max-width: none;
+  }
+
+  .results-table td:last-child {
+    padding-bottom: 0;
+  }
+
+  .tag-badge {
+    font-size: 0.72rem;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .results-table {
+    font-size: 0.65rem;
+  }
+
+  .results-table th,
+  .results-table td {
+    padding: 0.25rem 0.3rem;
+  }
+
+  .results-table th {
+    font-size: 0.6rem;
+  }
+
+  .code {
+    max-width: 60px;
+    font-size: 0.65rem;
+  }
+
+  .path {
+    font-size: 0.65rem;
+    max-width: 50px;
+  }
+
+  .meaning-muted {
+    display: none;
+  }
+}

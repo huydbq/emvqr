@@ -1,0 +1,84 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f5f5f7;
+  color: #111827;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-top: 0.5rem; /* default small padding under header to tighten layout */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Remove default button and link styles for accessibility */
+button {
+  font-family: inherit;
+}
+
+input,
+textarea {
+  font-family: inherit;
+}
+
+/* Improve touch targets on mobile */
+@media (max-width: 640px) {
+  button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  textarea {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+
+  input {
+    font-size: 16px;
+  }
+}
+
+/* Prevent horizontal scrolling */
+body,
+html {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* Reduce/adjust vertical gap under header for most viewport heights */
+@media (min-height: 900px) {
+  main {
+    padding-top: 0.9rem;
+  }
+}
+
+@media (max-height: 700px) {
+  main {
+    padding-top: 0.4rem;
+  }
+}

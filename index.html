@@ -1,54 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>EMVCo QR Parser</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <header>
-    <h1>EMVCo QR Parser</h1>
-    <p>Paste an EMVCo QR payload, and this tool will decode it into TLV fields.</p>
-  </header>
-
-  <main>
-    <section class="card">
-      <h2>1. Input EMVCo QR Payload</h2>
-      <label for="payload">Raw EMV String</label>
-      <textarea
-        id="payload"
-        placeholder="Example: 00020101021226...6304ABCD"
-      ></textarea>
-
-      <div class="btn-row">
-        <button type="button" onclick="handleParse()">
-          <span>▶</span> Parse
-        </button>
-        <button
-          type="button"
-          class="secondary"
-          onclick="document.getElementById('payload').value = ''"
-        >
-          Clear
-        </button>
-        <span id="status" class="status">Waiting for input…</span>
-      </div>
-    </section>
-
-    <section class="card">
-      <h2>2. Parsed Fields</h2>
-      <div id="results-container">
-        <p class="status">No data yet. Paste a payload and click Parse.</p>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    Static client-side parser – safe to host on GitHub Pages.
-  </footer>
-
-  <script src="tags.js"></script>
-  <script src="script.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EMVCo QR Parser</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>

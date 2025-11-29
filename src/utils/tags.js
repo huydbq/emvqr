@@ -1,5 +1,4 @@
-// Known EMV tags (top level)
-const TAG_LABELS = {
+export const TAG_LABELS = {
   "00": "Payload Format Indicator",
   "01": "Point of Initiation Method",
   "26": "Merchant Account Information (Template)",
