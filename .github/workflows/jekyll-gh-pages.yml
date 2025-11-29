@@ -7,9 +7,9 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read      # read the repo
-  pages: write        # deploy to Pages
-  id-token: write     # needed by deploy-pages
+  contents: read
+  pages: write
+  id-token: write
 
 concurrency:
   group: "github-pages"
@@ -25,7 +25,6 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
-          # use an LTS version your app supports; 22 is safe
           node-version: '24.9.0'
 
       - name: Install dependencies
@@ -37,7 +36,7 @@ jobs:
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist    # ← folder that `npm run build` outputs
+          path: ./dist
 
   deploy:
     runs-on: ubuntu-latest
