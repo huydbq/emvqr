@@ -84,9 +84,7 @@ export default function JsonBeautifierPage() {
   };
 
   return (
-    <section className="card json-beautifier-card">
-      <h2>Beautify or inspect JSON</h2>
-
+    <section className="json-beautifier-card">
       <div className="json-beautifier-grid">
         <div className="json-panel">
           <label htmlFor="json-input">Input JSON</label>
