@@ -1,64 +1,121 @@
-header {
+.app-header {
   background: #111827;
   color: #f9fafb;
-  padding: 0.75rem 1.25rem; /* slightly tighter header to reduce vertical footprint */
+  padding: 0.8rem 1.5rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  border-bottom: 1px solid rgba(255,255,255,0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-header h1 {
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.app-header h1 {
   margin: 0;
   font-size: 1.3rem;
 }
 
-header p {
+.app-header p {
   margin: 0.25rem 0 0;
   font-size: 0.9rem;
-  opacity: 0.8;
+  opacity: 0.85;
+}
+
+.header-nav {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.nav-link {
+  color: #c7d2fe;
+  text-decoration: none;
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.nav-link:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #f9fafb;
+}
+
+.nav-link.active {
+  background: #312e81;
+  color: #f9fafb;
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 /* Tablet */
 @media (max-width: 768px) {
-  header {
+  .app-header {
     padding: 0.75rem 1rem;
   }
 
-  header h1 {
+  .header-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .app-header h1 {
     font-size: 1.1rem;
   }
 
-  header p {
-    font-size: 0.8rem;
+  .app-header p {
+    font-size: 0.85rem;
   }
 }
 
 /* Mobile */
 @media (max-width: 640px) {
-  header {
-    padding: 0.5rem 0.75rem;
+  .app-header {
+    padding: 0.6rem 0.9rem;
   }
 
-  header h1 {
+  .app-header h1 {
     font-size: 1rem;
   }
 
-  header p {
-    font-size: 0.75rem;
-    margin-top: 0.15rem;
+  .app-header p {
+    font-size: 0.78rem;
+    margin-top: 0.1rem;
+  }
+
+  .header-nav {
+    width: 100%;
+  }
+
+  .nav-link {
+    flex: 1 1 auto;
+    text-align: center;
   }
 }
 
 /* Small Mobile */
 @media (max-width: 480px) {
-  header {
-    padding: 0.4rem 0.5rem;
+  .app-header {
+    padding: 0.5rem 0.75rem;
   }
 
-  header h1 {
-    font-size: 0.9rem;
+  .app-header h1 {
+    font-size: 0.95rem;
   }
 
-  header p {
-    font-size: 0.7rem;
+  .app-header p {
+    font-size: 0.72rem;
+  }
+
+  .nav-link {
+    font-size: 0.82rem;
+    padding: 0.35rem 0.75rem;
   }
 }

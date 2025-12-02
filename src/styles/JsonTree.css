@@ -1,0 +1,127 @@
+.json-tree {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+  font-size: 0.85rem;
+  color: #111827;
+}
+
+.json-tree-node {
+  margin-bottom: 0.75rem;
+  position: relative;
+  padding-left: 0.6rem;
+}
+
+.json-tree-node::before {
+  content: '';
+  position: absolute;
+  left: 0.2rem;
+  top: 0.8rem;
+  bottom: -0.2rem;
+  width: 1px;
+  background: linear-gradient(180deg, rgba(148, 163, 184, 0.8), rgba(203, 213, 225, 0));
+}
+
+.json-tree-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 0.6rem;
+  background: linear-gradient(135deg, #ffffff, #f8fafc);
+  border: 1px solid #e5e7eb;
+  border-radius: 0.8rem;
+  padding: 0.55rem 0.85rem;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.07);
+}
+
+.tree-toggle {
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 0.35rem;
+  border: 1px solid #e5e7eb;
+  background: #f8fafc;
+  cursor: pointer;
+  position: relative;
+  flex: 0 0 auto;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.tree-toggle::before,
+.tree-toggle::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.7rem;
+  height: 0.1rem;
+  background: #1f2937;
+  transform: translate(-50%, -50%);
+}
+
+.tree-toggle::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.tree-toggle.collapsed::after {
+  opacity: 0;
+}
+
+.tree-toggle:hover {
+  background: #eef2ff;
+  border-color: #c7d2fe;
+}
+
+.tree-toggle.placeholder {
+  border: none;
+  background: transparent;
+  cursor: default;
+}
+
+.json-tree-label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.json-tree-key {
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.json-tree-type {
+  font-size: 0.75rem;
+  color: #6b7280;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  background: #eef2ff;
+}
+
+.json-tree-value {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    'Liberation Mono', 'Courier New', monospace;
+  color: #0f172a;
+  word-break: break-word;
+  flex: 1 1 100%;
+}
+
+.json-tree-children {
+  list-style: none;
+  margin: 0.4rem 0 0 1.1rem;
+  padding-left: 0.75rem;
+  border-left: 2px solid rgba(148, 163, 184, 0.6);
+}
+
+@media (max-width: 640px) {
+  .json-tree-row {
+    flex-direction: column;
+  }
+
+  .tree-toggle {
+    align-self: flex-start;
+  }
+
+  .json-tree-children {
+    margin-left: 0.5rem;
+  }
+}
+

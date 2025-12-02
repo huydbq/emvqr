@@ -6,11 +6,15 @@ A clean, modular React application for parsing EMVCo QR codes into TLV (Tag-Leng
 
 ```
 src/
-├── components/          # React components
-│   ├── Header.jsx      # App header
-│   ├── Footer.jsx      # App footer
-│   ├── InputSection.jsx # Input area with parse button
-│   └── ResultsTable.jsx # Results display table
+├── components/          # Shared React components
+│   ├── Header.jsx
+│   ├── Footer.jsx
+│   ├── InputSection.jsx
+│   ├── ResultsTable.jsx
+│   └── JsonTree.jsx
+├── pages/
+│   ├── EmvParserPage.jsx
+│   └── JsonBeautifierPage.jsx
 ├── utils/              # Utility functions
 │   ├── parser.js       # EMV TLV parsing logic
 │   └── tags.js         # EMV tag definitions
@@ -32,6 +36,7 @@ src/
 - ✅ Comprehensive tag label mapping
 - ✅ Responsive design
 - ✅ Component-based architecture
+- ✅ Built-in JSON beautifier route with text/tree toggle + collapsible nodes
 - ✅ Modular utilities for easy testing and reuse
 
 ## Getting Started
@@ -58,6 +63,10 @@ npm run preview
 2. **Parse**: Application parses the TLV structure
 3. **Display**: Shows formatted results in an interactive table with tag descriptions
 
+### JSON Beautifier Route
+
+Visit `/json-beautifier` (or use the header navigation) to validate JSON, beautify/minify the payload, and flip between a formatted text block or an interactive tree view with per-node collapse controls for inspecting nested structures.
+
 ### Utilities
 
 - **`parseEmvTlv()`**: Parses raw EMV payload into TLV objects
@@ -68,7 +77,10 @@ npm run preview
 
 - **Header**: Displays title and description
 - **InputSection**: Handles payload input and parsing triggers
-- **ResultsTable**: Shows parsed fields in table format
+- **ResultsTable**: Shows parsed EMV fields in table format
+- **JsonTree**: Renders nested JSON data for the beautifier route
+- **EmvParserPage**: Main TLV parsing workflow
+- **JsonBeautifierPage**: JSON helper with beautify/minify + tree toggle
 - **Footer**: Static footer with info
 
 ## Safe to Use
