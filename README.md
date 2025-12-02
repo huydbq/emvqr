@@ -31,13 +31,14 @@ src/
 
 ## Features
 
-- ✅ Parse EMVCo QR payloads into structured TLV fields
-- ✅ Support for nested templates (tags 26-51 and 62)
-- ✅ Comprehensive tag label mapping
-- ✅ Responsive design
-- ✅ Component-based architecture
-- ✅ Built-in JSON beautifier route with text/tree toggle + collapsible nodes
-- ✅ Modular utilities for easy testing and reuse
+- ✅ EMVCo TLV parser with nested template support (tags 26-51 + 62)
+- ✅ Rich tag metadata sourced from `tags.js`
+- ✅ Responsive two-panel layout with persistent status messaging
+- ✅ JSON Beautifier route for prettify/minify/validation
+- ✅ Dual JSON outputs:
+  - **Text mode**: max-height 700px, always-on horizontal scrollbar, copy button, and wrapping for long values
+  - **Tree mode**: collapsible nodes, breadcrumb path, auto-scroll to selection, and pills that expand with content
+- ✅ Componentized architecture for easy reuse/testing
 
 ## Getting Started
 
@@ -65,23 +66,32 @@ npm run preview
 
 ### JSON Beautifier Route
 
-Visit `/json-beautifier` (or use the header navigation) to validate JSON, beautify/minify the payload, and flip between a formatted text block or an interactive tree view with per-node collapse controls for inspecting nested structures.
+Navigate to `/json-beautifier` (or use the header nav) to:
+
+1. Paste JSON, then beautify or minify it with instant validation feedback.
+2. Copy formatted output directly from the toolbar.
+3. Toggle between text view (wrapping lines, persistent horizontal scrollbar, smooth vertical scroll) and a tree inspector that:
+   - Shows the current JSON path
+   - Lets you expand/collapse nodes
+   - Scrolls the selected node into view
+   - Keeps pills sized to their content for ultra-long keys/values
 
 ### Utilities
 
 - **`parseEmvTlv()`**: Parses raw EMV payload into TLV objects
 - **`flattenEmvFields()`**: Flattens nested TLV structures for display
+- **`buildEmvTree()`**: Produces a nested data structure for the JSON tree view
 - **`escapeHtml()`**: Safely escapes HTML characters
 
 ## Components
 
-- **Header**: Displays title and description
-- **InputSection**: Handles payload input and parsing triggers
-- **ResultsTable**: Shows parsed EMV fields in table format
-- **JsonTree**: Renders nested JSON data for the beautifier route
-- **EmvParserPage**: Main TLV parsing workflow
-- **JsonBeautifierPage**: JSON helper with beautify/minify + tree toggle
-- **Footer**: Static footer with info
+- **Header**: Route-aware title, description, and navigation
+- **InputSection**: Handles payload input, parse/clear controls, and live status
+- **ResultsTable**: Displays TLV rows with tag badges, lengths, and meanings
+- **JsonTree**: Breadcrumb + collapsible inspector with auto-scroll and pill resizing
+- **EmvParserPage**: Main TLV parsing workflow (input + results card)
+- **JsonBeautifierPage**: JSON helper with text/tree view, copy button, and scroll-locked panels
+- **Footer**: Static footer with year + stack info
 
 ## Safe to Use
 
